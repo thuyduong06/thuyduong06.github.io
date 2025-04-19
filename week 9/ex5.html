@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mini Calculator</title>
+  <script>
+    function calculate() {
+      var a = document.getElementById("num1").value;
+      var b = document.getElementById("num2").value;
+      var op = document.getElementById("operator").value;
+
+      var pattern = /^[-+*/%]$/;
+      if (!pattern.test(op)) {
+        alert("Invalid operator!");
+        return;
+      }
+
+      var result = eval(a + op + b);
+      document.getElementById("result").value = result;
+    }
+  </script>
+</head>
+<body>
+  <h3>Simple Calculator</h3>
+  <input id="num1" placeholder="Number 1">
+  <input id="operator" placeholder="Operator (+ - * / %)">
+  <input id="num2" placeholder="Number 2">
+  <button onclick="calculate()">Calculate</button><br><br>
+  Result: <input id="result" readonly>
+</body>
+</html>

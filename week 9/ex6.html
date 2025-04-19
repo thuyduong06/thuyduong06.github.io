@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation (Like Figure 13.2)</title>
+  <script>
+    function FormValid() {
+      var username = document.forms["myForm"]["name"].value.trim();
+      var password = document.forms["myForm"]["password"].value.trim();
+      var confirm_password = document.forms["myForm"]["confirm_password"].value.trim();
+      var gender = document.forms["myForm"]["gender"].value;
+      var email = document.forms["myForm"]["email"].value.trim();
+      var phone = document.forms["myForm"]["phone"].value.trim();
+      var picture = document.forms["myForm"]["picture"].value.trim();
+      var description = document.forms["myForm"]["Description"].value.trim();
+      var education_level = document.forms["myForm"]["education_level"].value;
+      var language = document.forms["myForm"]["language"].value;
+      var favourites = document.forms["myForm"]["favourite"];
+      var favouriteSelected = false;
+
+      // Check if at least one checkbox is selected
+      for (var i = 0; i < favourites.length; i++) {
+        if (favourites[i].checked) {
+          favouriteSelected = true;
+          break;
+        }
+      }
+
+      if (username == "") {
+        alert("Please enter your name.");
+        return false;
+      }
+      if (password == "") {
+        alert("Please enter your password.");
+        return false;
+      }
+      if (confirm_password == "") {
+        alert("Please confirm your password.");
+        return false;
+      }
+      if (password !== confirm_password) {
+        alert("Passwords do not match.");
+        return false;
+      }
+      if (gender == "") {
+        alert("Please select your gender.");
+        return false;
+      }
+      if (email == "" || !email.includes("@") || !email.includes(".")) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+      if (phone == "" || isNaN(phone) || phone.length < 9) {
+        alert("Please enter a valid phone number.");
+        return false;
+      }
+      if (!favouriteSelected) {
+        alert("Please select at least one favourite.");
+        return false;
+      }
+      if (picture == "") {
+        alert("Please upload your picture.");
+        return false;
+      }
+      if (description == "") {
+        alert("Please enter your description.");
+        return false;
+      }
+      if (education_level == "select") {
+        alert("Please select your education level.");
+        return false;
+      }
+      if (language == "select") {
+        alert("Please select your language.");
+        return false;
+      }
+
+      alert("Form submitted successfully!");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h2>Register New Account</h2>
+  <form name="myForm" onsubmit="return FormValid()">
+    Username: <input type="text" name="name"><br><br>
+    Password: <input type="text" name="password"><br><br>
+    Confirm password: <input type="text" name="confirm_password"><br><br>
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female <br><br>
+    Phone: <input type="text" name="phone"><br><br>
+    Email: <input type="text" name="email"><br><br>
+    Favourite:
+    <input type="checkbox" name="favourite" value="Music"> Music
+    <input type="checkbox" name="favourite" value="Reading"> Reading <br><br>
+    Picture:
+    <input type="file" name="picture"><br><br>
+    Description:
+    <textarea name="Description" rows="4" cols="40"></textarea><br><br>
+    Education level:
+    <select name="education_level">
+      <option value="select">Select</option>
+      <option value="aptech">Aptech</option>
+    </select><br><br>
+    Language:
+    <select name="language" multiple size="4">
+      <option value="select">Select</option>
+      <option value="Vietnamese">Vietnamese</option>
+      <option value="English">English</option>
+      <option value="French">French</option>
+      <option value="Japanese">Japanese</option>
+    </select><br><br>
+    <input type="submit" value="Register">
+    <input type="reset" value="Reset">
+  </form>
+  <div id="result" style="margin-top: 30px; border: 1px solid #ccc; padding: 10px; width: 500px;"></div>
+</body>
+</html>

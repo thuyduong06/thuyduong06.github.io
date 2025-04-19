@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sum of Two Numbers</title>
+  <script>
+    function calculateSum() {
+      var a = prompt("Enter the first number:");
+      var b = prompt("Enter the second number:");
+
+      if (isNaN(a) || isNaN(b)) {
+        alert("Error: Please enter valid numbers.");
+      } else {
+        var sum = parseFloat(a) + parseFloat(b);
+        alert("The sum is: " + sum);
+      }
+    }
+  </script>
+</head>
+<body onload="calculateSum()">
+</body>
+</html>
